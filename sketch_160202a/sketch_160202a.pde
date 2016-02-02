@@ -1,5 +1,5 @@
 void setup(){
-	size(640, 360);
+	size(640, 640);
 }
 
 void draw(){
@@ -13,9 +13,12 @@ void drawCircle(float x, float y, float d) {
 	noFill();
 	ellipse(x, y, d, d);
 
-	if (d > 10) {
+	if (d > 2) {
 		drawCircle(x+d/2, y, d/2);
 		drawCircle(x-d/2, y, d/2);
+		drawCircle(x, y+d/2, d/2);
+		// drawCircle(x, y-d/2, d/2);
+
 		}
 	
 
