@@ -54,12 +54,18 @@ ArrayList<KochLine> lines;
 
 
 void setup() {
-	size(800, 300);
+	size(500, 700);
 	background(255);
 	lines = new ArrayList<KochLine>();
-	PVector start = new PVector(0, height-50);
-	PVector end = new PVector(width, height-50);
-	lines.add(new KochLine(start, end));
+	
+	PVector a = new PVector(0, 173);
+	PVector b = new PVector(width, 173);
+	PVector c = new PVector(width/2, 173+width*cos(radians(30)));//思考停止ポイント。あとでやる。
+	
+
+	lines.add(new KochLine(a, b));
+	lines.add(new KochLine(b, c));
+	lines.add(new KochLine(c, a));
 
 	for (int i = 0; i < 5; i++) {
 		generate();
