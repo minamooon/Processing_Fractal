@@ -20,7 +20,5 @@ void drawCircle(float x, float y, float d) {
 		// drawCircle(x, y-d/2, d/2);
 
 		}
-	
-
 }
 
