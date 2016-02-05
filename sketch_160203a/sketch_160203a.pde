@@ -8,6 +8,13 @@ KochLine(PVector a, PVector b) {
 
 }
 
+void wiggle() {
+	PVector vel = PVector.random2D();
+	start.add(vel);
+	vel = PVector.random2D();
+	end.add(vel);
+}
+
 void display() {
 	stroke(0);
 	line(start.x, start.y, end.x, end.y);
@@ -54,20 +61,20 @@ ArrayList<KochLine> lines;
 
 
 void setup() {
-	size(500, 700);
+	size(700, 700);
 	background(255);
 	lines = new ArrayList<KochLine>();
 	
 	PVector a = new PVector(0, 173);
-	PVector b = new PVector(width, 173);
-	PVector c = new PVector(width/2, 173+width*cos(radians(30)));//思考停止ポイント。あとでやる。
+	PVector b = new PVector(500, 173);
+	PVector c = new PVector(500/2, 173+500*cos(radians(30)));//思考停止ポイント。あとでやる。
 	
 
 	lines.add(new KochLine(a, b));
 	lines.add(new KochLine(b, c));
 	lines.add(new KochLine(c, a));
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 4; i++) {
 		generate();
 	}
 }
@@ -82,6 +89,12 @@ void draw() {
 	background(255);
 	for(KochLine l : lines) {
 		l.display();
+	}
+
+	if(mousePressed) {
+		for (KochLine l : lines) {
+			l.wiggle();
+		}
 	}
 	
 }
