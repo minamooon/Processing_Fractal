@@ -1,18 +1,36 @@
-size(640, 360);
+float theta;
 
-background(255);
-stroke(0);
+void setup() {
+	size(500, 500);
+}
 
-translate(width/2,height);
-line(0,0,0,-150);
-translate(0, -150);
+void draw() {
+	background(0);
+	theta = map(mouseX,0,width,0,PI/2);
 
-pushMatrix();//ここで反転のための下準備。
-rotate(PI/4);
-line(0,0,0,-100);
-popMatrix();//角度をリセットする。
+	translate(width/2, height);
+	stroke(255);
+	branch(100);
+}
 
-rotate(-PI/4);
-line(0,0,0,-100);
 
+void branch(float len){
+	line(0,0,0,-len);
+	translate(0, -len);
+
+	len *= 0.66;
+
+	if (len > 2) {
+		pushMatrix();
+		rotate(theta);
+		branch(len);
+		popMatrix();
+
+		pushMatrix();
+		rotate(-theta);
+		branch(len);
+		popMatrix();
+	}
+
+}
 
